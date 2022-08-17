@@ -1,0 +1,39 @@
+﻿@model MusicLibrary.Models.Artistum
+
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<h1>Crear</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Crear">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label">Nombre</label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nacionalidad" class="control-label">Nacionalidad</label>
+                <input asp-for="Nacionalidad" class="form-control" />
+                <span asp-validation-for="Nacionalidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaNacimiento" class="control-label">Fecha de nacimiento</label>
+                <input asp-for="FechaNacimiento" class="form-control" />
+                <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdGenero" class="control-label">Género</label>
+                <select asp-for="IdGenero" class ="form-control" asp-items="ViewBag.IdGenero"></select>
+                <span asp-validation-for="IdGenero" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <a asp-action="Index" class="btn btn-outline-primary">Regresar</a>
+                <input type="submit" asp-action="Crear" class="btn btn-outline-success" value="Guardar" />
+            </div>
+        </form>
+    </div>
+</div>

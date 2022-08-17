@@ -1,0 +1,27 @@
+﻿@model MusicLibrary.Models.Genero
+
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<h1>Eliminar</h1>
+
+<h3>¿Seguro de eliminar esto?</h3>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+    </dl>
+    
+    <form asp-action="EliminarConfirmado">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sí, Eliminar" class="btn btn-outline-danger" />
+        <a asp-action="Index" class="btn btn-outline-primary">No, Regresar</a>
+    </form>
+</div>

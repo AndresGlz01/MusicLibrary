@@ -1,0 +1,36 @@
+﻿@model MusicLibrary.Models.Genero
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            Artistas del género
+        </dt>
+        <dd class="col-sm-10">
+            @(Model.Artista.Count())
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-primary" asp-action="Index">Regresar</a>
+</div>
+<ul class="list-group mt-3">
+    @foreach (var item in ViewBag.Artistas)
+    {
+        <a class="list-group-item border-2 mt-1 mb-1 rounded-3" asp-action="Detalles" asp-controller="Artista" asp-route-id="@(item.Id)">
+            @(item.Nombre) - <span class="text-info">@(item.Nacionalidad)</span>
+        </a>
+    }
+</ul>

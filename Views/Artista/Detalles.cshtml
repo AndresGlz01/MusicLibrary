@@ -1,0 +1,56 @@
+﻿@model MusicLibrary.Models.Artistum
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nacionalidad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nacionalidad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdGeneroNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            <a asp-action="Detalles" asp-controller="Genero" asp-route-id="@(Model.IdGenero)">
+                @Html.DisplayFor(model => model.IdGeneroNavigation.Nombre)
+            </a>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-primary" asp-action="Index">Regresar</a>
+</div>
+@{
+    if (Model.Albums.Count > 0)
+    {
+        <h2 class="mt-3">Más del artista</h2>
+        <ul class="list-group mt-3">
+            @foreach (var item in Model.Albums)
+            {
+                <a class="list-group-item border-2 mt-1 mb-1 rounded-3" asp-action="Detalles" asp-controller="Album" asp-route-id="@(item.Id)">
+                    @(item.Nombre) - <span class="text-info">@(item.FechaLanzamiento.ToString("dd/MM/yyyy"))</span>
+                </a>
+            }
+        </ul>
+    }
+}
